@@ -71,8 +71,8 @@ def get_encodings(image , name):
             return increment_pics(name)
 
             # return return_json(data = encode , status= 1,message= 'Attendence Taken')
-    except:
-        return return_json(data = 0 ,status= 2 , message= "No Faces detected in image")
+    except Exception as e:
+        return return_json(data = 0 ,status= 2 , message= str(e))
 
 
 # read encodings of a persom
