@@ -68,7 +68,7 @@ def get_encodings(image , name):
             encode = encode[0]
             encode = encode.tolist()
             app_database.write_encodings(encoded=encode , name=name)
-            return increment_pics()
+            return increment_pics(name)
 
             # return return_json(data = encode , status= 1,message= 'Attendence Taken')
     except:
