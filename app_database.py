@@ -82,12 +82,12 @@ def get_lable_encoder():
 # write encodings
 
 def write_encodings(name , encoded):
+    rt = create_realtime_instance()
     try:
-        rt = create_realtime_instance()
+        lis = rt.child(f"users/{name}").get().val()['encoding']    
+        lis = list(lis)
     except:
         lis = []
-    lis = rt.child(f"users/{name}").get().val()['encoding']
-    lis = list(lis)
     lis.append(encoded)
     rt.child(f"users/{name}").update(data={'encoding' : lis })
 
