@@ -163,7 +163,7 @@ def recognize_image(image):
         # image = cv2.resize(image,(900,900))
         # cv2.imshow("Image", image)
         # cv2.waitKey(0)
-        for i in range(attendance):
+        for i in attendance:
             mark_attendence(i)
 
         return return_json(data = attendance ,status= 1, message='Made Attendance List') 
