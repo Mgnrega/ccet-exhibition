@@ -57,22 +57,21 @@ def get_encodings(image , name):
 
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     
-    try:
-        rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        boxes = face_recognition.face_locations(rgb)
-        encode = face_recognition.face_encodings(rgb, boxes)
-        if(len(encode) > 1):
-            
-            return return_json(data =0 ,status =  3 , message='More than one faces in image' )
-        else:
-            encode = encode[0]
-            encode = encode.tolist()
-            app_database.write_encodings(encoded=encode , name=name)
-            return increment_pics(name)
+    rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    boxes = face_recognition.face_locations(rgb)
+    encode = face_recognition.face_encodings(rgb, boxes)
+    if(len(encode) > 1):
+
+        return return_json(data =0 ,status =  3 , message='More than one faces in image' )
+    else:
+        encode = encode[0]
+        encode = encode.tolist()
+        app_database.write_encodings(encoded=encode , name=name)
+        return increment_pics(name)
 
             # return return_json(data = encode , status= 1,message= 'Attendence Taken')
-    except Exception as e:
-        return return_json(data = 0 ,status= 2 , message= str(e))
+#     except Exception as e:
+#         return return_json(data = 0 ,status= 2 , message= str(e))
 
 
 # read encodings of a persom
